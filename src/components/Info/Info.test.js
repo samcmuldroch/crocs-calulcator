@@ -9,7 +9,7 @@ describe("Info Component", () => {
     height: "176",
     id: "2b926f1b-db1f-45ac-af87-2130da1e1a2f",
     date: "10/25/2019",
-    bmi: "16.14",
+    crocs: "16.14",
     deleteCard: jest.fn()
   };
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe("Info Component", () => {
   });
 
   it("renders with props", () => {
-    expect(wrapper.find("[data-test='bmi']").text()).toEqual("BMI: 16.14");
+    expect(wrapper.find("[data-test='crocs']").text()).toEqual("Crocs: 16.14");
 
     expect(wrapper.find("[data-test='weight']").text()).toEqual(
       "Weight: 50 kg"

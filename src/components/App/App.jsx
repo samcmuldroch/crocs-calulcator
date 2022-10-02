@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
-import BmiForm from '../BmiForm/BmiForm';
+import CrocsForm from '../CrocsForm/CrocsForm';
 import Info from '../Info/Info';
 import Bar from '../Bar/Bar';
 import { getData, storeData } from '../../helpers/localStorage';
@@ -15,14 +15,14 @@ const App = () => {
   useEffect(() => {
     storeData('data', state);
     const date = state.map(obj => obj.date);
-    const bmi = state.map(obj => obj.bmi);
-    let newData = { date, bmi };
+    const crocs = state.map(obj => obj.crocs);
+    let newData = { date, crocs };
     setData(newData);
   }, [state]);
 
   const handleChange = val => {
     let heightInM = val.height / 100;
-    val.bmi = (val.weight / (heightInM * heightInM)).toFixed(2);
+    val.crocs = (val.starSign.value + (heightInM * heightInM)).toFixed(2);
     val.id = uuidv4();
     let newVal = [...state, val];
     let len = newVal.length;
@@ -45,12 +45,12 @@ const App = () => {
   return (
     <div className='container'>
       <div className='row center'>
-        <h1 className='white-text'> BMI Tracker </h1>
+        <h1 className='white-text'> How many Crocs should you buy? </h1>
       </div>
       <div className='row'>
         <div className='col m12 s12'>
-          <BmiForm change={handleChange} />
-          <Bar labelData={data.date} bmiData={data.bmi} />
+          <CrocsForm change={handleChange} />
+          <Bar labelData={data.date} crocsData={data.crocs} />
           <div>
             <div className='row center'>
               <h4 className='white-text'>7 Day Data</h4>
@@ -62,10 +62,10 @@ const App = () => {
                     <Info
                       key={info.id}
                       id={info.id}
-                      weight={info.weight}
+                      starSign={info.starSign}
                       height={info.height}
                       date={info.date}
-                      bmi={info.bmi}
+                      crocs={info.crocs}
                       deleteCard={handleDelete}
                     />
                   ))}

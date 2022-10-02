@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Info = ({ weight, height, id, date, bmi, deleteCard }) => {
+const Info = ({ starSign, height, id, date, crocs, deleteCard }) => {
   const handleDelete = () => {
     deleteCard(id);
   };
@@ -10,11 +10,11 @@ const Info = ({ weight, height, id, date, bmi, deleteCard }) => {
     <div className="col m6 s12">
       <div className="card">
         <div className="card-content">
-          <span className="card-title" data-test="bmi">
-            BMI: {bmi}
+          <span className="card-title" data-test="crocs">
+            Number of Crocs: {crocs}
           </span>
           <div className="card-data">
-            <span data-test="weight">Weight: {weight} kg</span>
+            <span data-test="starSign">Star Sign: {starSign.label}</span>
             <span data-test="height">Height: {height} cm</span>
             <span data-test="date">Date: {date}</span>
           </div>
@@ -29,11 +29,11 @@ const Info = ({ weight, height, id, date, bmi, deleteCard }) => {
 };
 
 Info.propTypes = {
-  weight: PropTypes.string,
+  starSign: PropTypes.object,
   height: PropTypes.string,
   id: PropTypes.string,
   date: PropTypes.string,
-  bmi: PropTypes.string,
+  crocs: PropTypes.string,
   deleteCard: PropTypes.func
 };
 
