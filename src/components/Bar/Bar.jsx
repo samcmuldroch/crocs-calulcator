@@ -13,7 +13,7 @@ const Bar = ({ labelData, crocsData }) => {
       labels: labelData,
       datasets: [
         {
-          label: 'Number of Crocs',
+          label: 'Number of Crocs to Buy',
           data: crocsData,
           backgroundColor: gradient,
           borderColor: '#3F51B5',
@@ -51,7 +51,7 @@ const Bar = ({ labelData, crocsData }) => {
         {
           scaleLabel: {
             display: true,
-            labelString: 'Number of Crocs',
+            labelString: 'Number of Crocs to Buy',
             fontSize: 18,
             fontColor: 'white'
           },

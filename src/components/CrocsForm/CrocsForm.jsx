@@ -5,7 +5,7 @@ import Select from 'react-select'
 
 const initialValues = {
 	starSign: 0,
-	height: '',
+	currentCrocs: 0,
 	date: ''
 }
 
@@ -24,24 +24,38 @@ const options = [
   { value: 4, label: 'Pisces' },
 ]
 
+const optionsCurrentCrocs = [
+  { value: 0, label: 'Zero' },
+  { value: 1, label: 'One' },
+  { value: 2, label: 'Two' },
+  { value: 3, label: 'Three' },
+  { value: 4, label: 'Four' },
+  { value: 5, label: 'Five' },
+  { value: 6, label: 'Six' },
+  { value: 7, label: 'Seven' },
+  { value: 8, label: 'Eight' },
+  { value: 9, label: 'Nine' },
+  { value: 10, label: 'Ten' },
+  { value: 11, label: 'More than Ten' },
+]
+
 const CrocsForm = ({ change }) => {
 	const [state, setState] = useState(initialValues);
-
-	const handleChange = e => {
-		let { value, name } = e.target;
-		const date = new Date().toLocaleString().split(',')[0];
-		setState({
-			...state,
-			[name]: value,
-			date
-		});
-	};
 
 	const handleStarSignChange = starSign => {
 	const date = new Date().toLocaleString().split(',')[0];
     setState({ 
     ...state,
     starSign: starSign,
+    date
+    });
+   };
+
+    const handleCurrentCrocsChange = currentCrocs => {
+	const date = new Date().toLocaleString().split(',')[0];
+    setState({ 
+    ...state,
+    currentCrocs: currentCrocs,
     date
     });
   };
@@ -67,29 +81,28 @@ const CrocsForm = ({ change }) => {
         </div>
 
 				<div className="col m6 s12">
-					<label htmlFor="height">Height (in cm)</label>
-					<input
-						id="height"
-						name="height"
-						type="number"
-						min="1"
-						max="999"
-						placeholder="176"
-						value={state.height}
-						onChange={handleChange}
-					/>
-				</div>
-			</div>
+					
+        <label>
+          How many crocs do you currently own?
+        </label>
+
+
+      <Select options={optionsCurrentCrocs}
+      value={state.currentCrocs}
+        onChange={handleCurrentCrocsChange} />
+        </div>
+
 			<div className="center">
 				<button
 					id="crocs-btn"
 					className="calculate-btn"
 					type="button"
-					disabled={state.starSign === '' || state.height === ''}
+					disabled={state.starSign === '' || state.currentCrocs === ''}
 					onClick={handleSubmit}
 				>
 					Calculate Crocs
 				</button>
+			</div>
 			</div>
 		</>
 	);

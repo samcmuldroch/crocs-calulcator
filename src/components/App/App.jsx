@@ -21,8 +21,7 @@ const App = () => {
   }, [state]);
 
   const handleChange = val => {
-    let heightInM = val.height / 100;
-    val.crocs = (val.starSign.value + (heightInM * heightInM)).toFixed(2);
+    val.crocs = Math.max(val.starSign.value - val.currentCrocs.value, 1)
     val.id = uuidv4();
     let newVal = [...state, val];
     let len = newVal.length;
@@ -63,7 +62,7 @@ const App = () => {
                       key={info.id}
                       id={info.id}
                       starSign={info.starSign}
-                      height={info.height}
+                      currentCrocs={info.currentCrocs}
                       date={info.date}
                       crocs={info.crocs}
                       deleteCard={handleDelete}
