@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div className='container'>
       <div className='row center'>
-        <h1 className='white-text'> How many Crocs should you buy? </h1>
+        <h1 className='white-text'> How many crocs should you buy? </h1>
       </div>
       <div className='row'>
         <div className='col m12 s12'>

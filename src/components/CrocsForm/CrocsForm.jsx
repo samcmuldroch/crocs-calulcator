@@ -71,7 +71,7 @@ const CrocsForm = ({ change }) => {
 				<div className="col m6 s12">
 					
         <label>
-          Pick your Star Sign:
+          What's your star sign?
         </label>
 
 
